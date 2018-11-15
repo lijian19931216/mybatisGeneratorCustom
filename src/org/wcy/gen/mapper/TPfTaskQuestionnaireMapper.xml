@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.wcy.gen.mapper.TPfTaskQuestionnaireMapper" >
+
+    <resultMap id="BaseResultMap" type="org.wcy.gen.model.TPfTaskQuestionnaire" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="questionnaire_id" property="questionnaireId" jdbcType="BIGINT" />
+        <result column="task_id" property="taskId" jdbcType="BIGINT" />
+        <result column="crt_time" property="crtTime" jdbcType="TIMESTAMP" />
+        <result column="crt_user_id" property="crtUserId" jdbcType="BIGINT" />
+        <result column="crt_app_sys_id" property="crtAppSysId" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, questionnaire_id, task_id, crt_time, crt_user_id, crt_app_sys_id
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select 
+        <include refid="Base_Column_List" />
+        from t_pf_task_questionnaire
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from t_pf_task_questionnaire
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="org.wcy.gen.model.TPfTaskQuestionnaire" >
+        insert into t_pf_task_questionnaire (id, questionnaire_id, task_id, 
+            crt_time, crt_user_id, crt_app_sys_id
+            )
+        values (#{id,jdbcType=BIGINT}, #{questionnaireId,jdbcType=BIGINT}, #{taskId,jdbcType=BIGINT}, 
+            #{crtTime,jdbcType=TIMESTAMP}, #{crtUserId,jdbcType=BIGINT}, #{crtAppSysId,jdbcType=VARCHAR}
+            )
+    </insert>
+
+    <insert id="insertSelective" parameterType="org.wcy.gen.model.TPfTaskQuestionnaire" >
+        insert into t_pf_task_questionnaire
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="questionnaireId != null" >
+                questionnaire_id,
+            </if>
+            <if test="taskId != null" >
+                task_id,
+            </if>
+            <if test="crtTime != null" >
+                crt_time,
+            </if>
+            <if test="crtUserId != null" >
+                crt_user_id,
+            </if>
+            <if test="crtAppSysId != null" >
+                crt_app_sys_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="questionnaireId != null" >
+                #{questionnaireId,jdbcType=BIGINT},
+            </if>
+            <if test="taskId != null" >
+                #{taskId,jdbcType=BIGINT},
+            </if>
+            <if test="crtTime != null" >
+                #{crtTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="crtUserId != null" >
+                #{crtUserId,jdbcType=BIGINT},
+            </if>
+            <if test="crtAppSysId != null" >
+                #{crtAppSysId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="org.wcy.gen.model.TPfTaskQuestionnaire" >
+        update t_pf_task_questionnaire
+        <set >
+            <if test="questionnaireId != null" >
+                questionnaire_id = #{questionnaireId,jdbcType=BIGINT},
+            </if>
+            <if test="taskId != null" >
+                task_id = #{taskId,jdbcType=BIGINT},
+            </if>
+            <if test="crtTime != null" >
+                crt_time = #{crtTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="crtUserId != null" >
+                crt_user_id = #{crtUserId,jdbcType=BIGINT},
+            </if>
+            <if test="crtAppSysId != null" >
+                crt_app_sys_id = #{crtAppSysId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="org.wcy.gen.model.TPfTaskQuestionnaire" >
+        update t_pf_task_questionnaire
+        set questionnaire_id = #{questionnaireId,jdbcType=BIGINT},
+            task_id = #{taskId,jdbcType=BIGINT},
+            crt_time = #{crtTime,jdbcType=TIMESTAMP},
+            crt_user_id = #{crtUserId,jdbcType=BIGINT},
+            crt_app_sys_id = #{crtAppSysId,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>

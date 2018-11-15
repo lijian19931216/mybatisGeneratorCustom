@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.wcy.gen.mapper.TPfQuestionnaireMapper" >
+
+    <resultMap id="BaseResultMap" type="org.wcy.gen.model.TPfQuestionnaire" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="qnaire_name" property="qnaireName" jdbcType="VARCHAR" />
+        <result column="qnaire_type" property="qnaireType" jdbcType="INTEGER" />
+        <result column="qnaire_code" property="qnaireCode" jdbcType="VARCHAR" />
+        <result column="qnaire_status" property="qnaireStatus" jdbcType="INTEGER" />
+        <result column="qnaire_visible" property="qnaireVisible" jdbcType="INTEGER" />
+        <result column="er_org_id" property="erOrgId" jdbcType="BIGINT" />
+        <result column="er_org_name" property="erOrgName" jdbcType="VARCHAR" />
+        <result column="er_org_code" property="erOrgCode" jdbcType="VARCHAR" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+        <result column="crt_time" property="crtTime" jdbcType="TIMESTAMP" />
+        <result column="crt_user_id" property="crtUserId" jdbcType="BIGINT" />
+        <result column="crt_app_sys_id" property="crtAppSysId" jdbcType="VARCHAR" />
+        <result column="modf_user_id" property="modfUserId" jdbcType="BIGINT" />
+        <result column="modf_time" property="modfTime" jdbcType="TIMESTAMP" />
+        <result column="modf_app_sys_id" property="modfAppSysId" jdbcType="VARCHAR" />
+        <result column="extended1" property="extended1" jdbcType="VARCHAR" />
+        <result column="extended2" property="extended2" jdbcType="VARCHAR" />
+        <result column="extended3" property="extended3" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, qnaire_name, qnaire_type, qnaire_code, qnaire_status, qnaire_visible, er_org_id, 
+        er_org_name, er_org_code, remark, crt_time, crt_user_id, crt_app_sys_id, modf_user_id, 
+        modf_time, modf_app_sys_id, extended1, extended2, extended3
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select 
+        <include refid="Base_Column_List" />
+        from t_pf_questionnaire
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from t_pf_questionnaire
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="org.wcy.gen.model.TPfQuestionnaire" >
+        insert into t_pf_questionnaire (id, qnaire_name, qnaire_type, 
+            qnaire_code, qnaire_status, qnaire_visible, 
+            er_org_id, er_org_name, er_org_code, 
+            remark, crt_time, crt_user_id, 
+            crt_app_sys_id, modf_user_id, modf_time, 
+            modf_app_sys_id, extended1, extended2, 
+            extended3)
+        values (#{id,jdbcType=BIGINT}, #{qnaireName,jdbcType=VARCHAR}, #{qnaireType,jdbcType=INTEGER}, 
+            #{qnaireCode,jdbcType=VARCHAR}, #{qnaireStatus,jdbcType=INTEGER}, #{qnaireVisible,jdbcType=INTEGER}, 
+            #{erOrgId,jdbcType=BIGINT}, #{erOrgName,jdbcType=VARCHAR}, #{erOrgCode,jdbcType=VARCHAR}, 
+            #{remark,jdbcType=VARCHAR}, #{crtTime,jdbcType=TIMESTAMP}, #{crtUserId,jdbcType=BIGINT}, 
+            #{crtAppSysId,jdbcType=VARCHAR}, #{modfUserId,jdbcType=BIGINT}, #{modfTime,jdbcType=TIMESTAMP}, 
+            #{modfAppSysId,jdbcType=VARCHAR}, #{extended1,jdbcType=VARCHAR}, #{extended2,jdbcType=VARCHAR}, 
+            #{extended3,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="org.wcy.gen.model.TPfQuestionnaire" >
+        insert into t_pf_questionnaire
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="qnaireName != null" >
+                qnaire_name,
+            </if>
+            <if test="qnaireType != null" >
+                qnaire_type,
+            </if>
+            <if test="qnaireCode != null" >
+                qnaire_code,
+            </if>
+            <if test="qnaireStatus != null" >
+                qnaire_status,
+            </if>
+            <if test="qnaireVisible != null" >
+                qnaire_visible,
+            </if>
+            <if test="erOrgId != null" >
+                er_org_id,
+            </if>
+            <if test="erOrgName != null" >
+                er_org_name,
+            </if>
+            <if test="erOrgCode != null" >
+                er_org_code,
+            </if>
+            <if test="remark != null" >
+                remark,
+            </if>
+            <if test="crtTime != null" >
+                crt_time,
+            </if>
+            <if test="crtUserId != null" >
+                crt_user_id,
+            </if>
+            <if test="crtAppSysId != null" >
+                crt_app_sys_id,
+            </if>
+            <if test="modfUserId != null" >
+                modf_user_id,
+            </if>
+            <if test="modfTime != null" >
+                modf_time,
+            </if>
+            <if test="modfAppSysId != null" >
+                modf_app_sys_id,
+            </if>
+            <if test="extended1 != null" >
+                extended1,
+            </if>
+            <if test="extended2 != null" >
+                extended2,
+            </if>
+            <if test="extended3 != null" >
+                extended3,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="qnaireName != null" >
+                #{qnaireName,jdbcType=VARCHAR},
+            </if>
+            <if test="qnaireType != null" >
+                #{qnaireType,jdbcType=INTEGER},
+            </if>
+            <if test="qnaireCode != null" >
+                #{qnaireCode,jdbcType=VARCHAR},
+            </if>
+            <if test="qnaireStatus != null" >
+                #{qnaireStatus,jdbcType=INTEGER},
+            </if>
+            <if test="qnaireVisible != null" >
+                #{qnaireVisible,jdbcType=INTEGER},
+            </if>
+            <if test="erOrgId != null" >
+                #{erOrgId,jdbcType=BIGINT},
+            </if>
+            <if test="erOrgName != null" >
+                #{erOrgName,jdbcType=VARCHAR},
+            </if>
+            <if test="erOrgCode != null" >
+                #{erOrgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null" >
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="crtTime != null" >
+                #{crtTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="crtUserId != null" >
+                #{crtUserId,jdbcType=BIGINT},
+            </if>
+            <if test="crtAppSysId != null" >
+                #{crtAppSysId,jdbcType=VARCHAR},
+            </if>
+            <if test="modfUserId != null" >
+                #{modfUserId,jdbcType=BIGINT},
+            </if>
+            <if test="modfTime != null" >
+                #{modfTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modfAppSysId != null" >
+                #{modfAppSysId,jdbcType=VARCHAR},
+            </if>
+            <if test="extended1 != null" >
+                #{extended1,jdbcType=VARCHAR},
+            </if>
+            <if test="extended2 != null" >
+                #{extended2,jdbcType=VARCHAR},
+            </if>
+            <if test="extended3 != null" >
+                #{extended3,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="org.wcy.gen.model.TPfQuestionnaire" >
+        update t_pf_questionnaire
+        <set >
+            <if test="qnaireName != null" >
+                qnaire_name = #{qnaireName,jdbcType=VARCHAR},
+            </if>
+            <if test="qnaireType != null" >
+                qnaire_type = #{qnaireType,jdbcType=INTEGER},
+            </if>
+            <if test="qnaireCode != null" >
+                qnaire_code = #{qnaireCode,jdbcType=VARCHAR},
+            </if>
+            <if test="qnaireStatus != null" >
+                qnaire_status = #{qnaireStatus,jdbcType=INTEGER},
+            </if>
+            <if test="qnaireVisible != null" >
+                qnaire_visible = #{qnaireVisible,jdbcType=INTEGER},
+            </if>
+            <if test="erOrgId != null" >
+                er_org_id = #{erOrgId,jdbcType=BIGINT},
+            </if>
+            <if test="erOrgName != null" >
+                er_org_name = #{erOrgName,jdbcType=VARCHAR},
+            </if>
+            <if test="erOrgCode != null" >
+                er_org_code = #{erOrgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null" >
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="crtTime != null" >
+                crt_time = #{crtTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="crtUserId != null" >
+                crt_user_id = #{crtUserId,jdbcType=BIGINT},
+            </if>
+            <if test="crtAppSysId != null" >
+                crt_app_sys_id = #{crtAppSysId,jdbcType=VARCHAR},
+            </if>
+            <if test="modfUserId != null" >
+                modf_user_id = #{modfUserId,jdbcType=BIGINT},
+            </if>
+            <if test="modfTime != null" >
+                modf_time = #{modfTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modfAppSysId != null" >
+                modf_app_sys_id = #{modfAppSysId,jdbcType=VARCHAR},
+            </if>
+            <if test="extended1 != null" >
+                extended1 = #{extended1,jdbcType=VARCHAR},
+            </if>
+            <if test="extended2 != null" >
+                extended2 = #{extended2,jdbcType=VARCHAR},
+            </if>
+            <if test="extended3 != null" >
+                extended3 = #{extended3,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="org.wcy.gen.model.TPfQuestionnaire" >
+        update t_pf_questionnaire
+        set qnaire_name = #{qnaireName,jdbcType=VARCHAR},
+            qnaire_type = #{qnaireType,jdbcType=INTEGER},
+            qnaire_code = #{qnaireCode,jdbcType=VARCHAR},
+            qnaire_status = #{qnaireStatus,jdbcType=INTEGER},
+            qnaire_visible = #{qnaireVisible,jdbcType=INTEGER},
+            er_org_id = #{erOrgId,jdbcType=BIGINT},
+            er_org_name = #{erOrgName,jdbcType=VARCHAR},
+            er_org_code = #{erOrgCode,jdbcType=VARCHAR},
+            remark = #{remark,jdbcType=VARCHAR},
+            crt_time = #{crtTime,jdbcType=TIMESTAMP},
+            crt_user_id = #{crtUserId,jdbcType=BIGINT},
+            crt_app_sys_id = #{crtAppSysId,jdbcType=VARCHAR},
+            modf_user_id = #{modfUserId,jdbcType=BIGINT},
+            modf_time = #{modfTime,jdbcType=TIMESTAMP},
+            modf_app_sys_id = #{modfAppSysId,jdbcType=VARCHAR},
+            extended1 = #{extended1,jdbcType=VARCHAR},
+            extended2 = #{extended2,jdbcType=VARCHAR},
+            extended3 = #{extended3,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>

@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.wcy.gen.mapper.TPfQuestionnaireRecordMapper" >
+
+    <resultMap id="BaseResultMap" type="org.wcy.gen.model.TPfQuestionnaireRecord" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="touch_id" property="touchId" jdbcType="BIGINT" />
+        <result column="qnaire_id" property="qnaireId" jdbcType="BIGINT" />
+        <result column="question_id" property="questionId" jdbcType="BIGINT" />
+        <result column="question_type" property="questionType" jdbcType="INTEGER" />
+        <result column="answer" property="answer" jdbcType="VARCHAR" />
+        <result column="task_id" property="taskId" jdbcType="BIGINT" />
+        <result column="task_name" property="taskName" jdbcType="VARCHAR" />
+        <result column="task_code" property="taskCode" jdbcType="VARCHAR" />
+        <result column="seat_id" property="seatId" jdbcType="BIGINT" />
+        <result column="seat_name" property="seatName" jdbcType="VARCHAR" />
+        <result column="seat_code" property="seatCode" jdbcType="VARCHAR" />
+        <result column="grade_no" property="gradeNo" jdbcType="VARCHAR" />
+        <result column="cti_agent_id" property="ctiAgentId" jdbcType="VARCHAR" />
+        <result column="sp_org_id" property="spOrgId" jdbcType="BIGINT" />
+        <result column="sp_org_name" property="spOrgName" jdbcType="VARCHAR" />
+        <result column="sp_org_code" property="spOrgCode" jdbcType="VARCHAR" />
+        <result column="er_org_id" property="erOrgId" jdbcType="BIGINT" />
+        <result column="er_org_name" property="erOrgName" jdbcType="VARCHAR" />
+        <result column="er_org_code" property="erOrgCode" jdbcType="VARCHAR" />
+        <result column="call_mark_cntt" property="callMarkCntt" jdbcType="VARCHAR" />
+        <result column="called_cust_num" property="calledCustNum" jdbcType="VARCHAR" />
+        <result column="called_cust_name" property="calledCustName" jdbcType="VARCHAR" />
+        <result column="crt_time" property="crtTime" jdbcType="TIMESTAMP" />
+        <result column="crt_user_id" property="crtUserId" jdbcType="BIGINT" />
+        <result column="crt_app_sys_id" property="crtAppSysId" jdbcType="VARCHAR" />
+        <result column="extended1" property="extended1" jdbcType="VARCHAR" />
+        <result column="extended2" property="extended2" jdbcType="VARCHAR" />
+        <result column="extended3" property="extended3" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, touch_id, qnaire_id, question_id, question_type, answer, task_id, task_name, 
+        task_code, seat_id, seat_name, seat_code, grade_no, cti_agent_id, sp_org_id, sp_org_name, 
+        sp_org_code, er_org_id, er_org_name, er_org_code, call_mark_cntt, called_cust_num, 
+        called_cust_name, crt_time, crt_user_id, crt_app_sys_id, extended1, extended2, extended3
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select 
+        <include refid="Base_Column_List" />
+        from t_pf_questionnaire_record
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from t_pf_questionnaire_record
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="org.wcy.gen.model.TPfQuestionnaireRecord" >
+        insert into t_pf_questionnaire_record (id, touch_id, qnaire_id, 
+            question_id, question_type, answer, 
+            task_id, task_name, task_code, 
+            seat_id, seat_name, seat_code, 
+            grade_no, cti_agent_id, sp_org_id, 
+            sp_org_name, sp_org_code, er_org_id, 
+            er_org_name, er_org_code, call_mark_cntt, 
+            called_cust_num, called_cust_name, crt_time, 
+            crt_user_id, crt_app_sys_id, extended1, 
+            extended2, extended3)
+        values (#{id,jdbcType=BIGINT}, #{touchId,jdbcType=BIGINT}, #{qnaireId,jdbcType=BIGINT}, 
+            #{questionId,jdbcType=BIGINT}, #{questionType,jdbcType=INTEGER}, #{answer,jdbcType=VARCHAR}, 
+            #{taskId,jdbcType=BIGINT}, #{taskName,jdbcType=VARCHAR}, #{taskCode,jdbcType=VARCHAR}, 
+            #{seatId,jdbcType=BIGINT}, #{seatName,jdbcType=VARCHAR}, #{seatCode,jdbcType=VARCHAR}, 
+            #{gradeNo,jdbcType=VARCHAR}, #{ctiAgentId,jdbcType=VARCHAR}, #{spOrgId,jdbcType=BIGINT}, 
+            #{spOrgName,jdbcType=VARCHAR}, #{spOrgCode,jdbcType=VARCHAR}, #{erOrgId,jdbcType=BIGINT}, 
+            #{erOrgName,jdbcType=VARCHAR}, #{erOrgCode,jdbcType=VARCHAR}, #{callMarkCntt,jdbcType=VARCHAR}, 
+            #{calledCustNum,jdbcType=VARCHAR}, #{calledCustName,jdbcType=VARCHAR}, #{crtTime,jdbcType=TIMESTAMP}, 
+            #{crtUserId,jdbcType=BIGINT}, #{crtAppSysId,jdbcType=VARCHAR}, #{extended1,jdbcType=VARCHAR}, 
+            #{extended2,jdbcType=VARCHAR}, #{extended3,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="org.wcy.gen.model.TPfQuestionnaireRecord" >
+        insert into t_pf_questionnaire_record
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="touchId != null" >
+                touch_id,
+            </if>
+            <if test="qnaireId != null" >
+                qnaire_id,
+            </if>
+            <if test="questionId != null" >
+                question_id,
+            </if>
+            <if test="questionType != null" >
+                question_type,
+            </if>
+            <if test="answer != null" >
+                answer,
+            </if>
+            <if test="taskId != null" >
+                task_id,
+            </if>
+            <if test="taskName != null" >
+                task_name,
+            </if>
+            <if test="taskCode != null" >
+                task_code,
+            </if>
+            <if test="seatId != null" >
+                seat_id,
+            </if>
+            <if test="seatName != null" >
+                seat_name,
+            </if>
+            <if test="seatCode != null" >
+                seat_code,
+            </if>
+            <if test="gradeNo != null" >
+                grade_no,
+            </if>
+            <if test="ctiAgentId != null" >
+                cti_agent_id,
+            </if>
+            <if test="spOrgId != null" >
+                sp_org_id,
+            </if>
+            <if test="spOrgName != null" >
+                sp_org_name,
+            </if>
+            <if test="spOrgCode != null" >
+                sp_org_code,
+            </if>
+            <if test="erOrgId != null" >
+                er_org_id,
+            </if>
+            <if test="erOrgName != null" >
+                er_org_name,
+            </if>
+            <if test="erOrgCode != null" >
+                er_org_code,
+            </if>
+            <if test="callMarkCntt != null" >
+                call_mark_cntt,
+            </if>
+            <if test="calledCustNum != null" >
+                called_cust_num,
+            </if>
+            <if test="calledCustName != null" >
+                called_cust_name,
+            </if>
+            <if test="crtTime != null" >
+                crt_time,
+            </if>
+            <if test="crtUserId != null" >
+                crt_user_id,
+            </if>
+            <if test="crtAppSysId != null" >
+                crt_app_sys_id,
+            </if>
+            <if test="extended1 != null" >
+                extended1,
+            </if>
+            <if test="extended2 != null" >
+                extended2,
+            </if>
+            <if test="extended3 != null" >
+                extended3,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="touchId != null" >
+                #{touchId,jdbcType=BIGINT},
+            </if>
+            <if test="qnaireId != null" >
+                #{qnaireId,jdbcType=BIGINT},
+            </if>
+            <if test="questionId != null" >
+                #{questionId,jdbcType=BIGINT},
+            </if>
+            <if test="questionType != null" >
+                #{questionType,jdbcType=INTEGER},
+            </if>
+            <if test="answer != null" >
+                #{answer,jdbcType=VARCHAR},
+            </if>
+            <if test="taskId != null" >
+                #{taskId,jdbcType=BIGINT},
+            </if>
+            <if test="taskName != null" >
+                #{taskName,jdbcType=VARCHAR},
+            </if>
+            <if test="taskCode != null" >
+                #{taskCode,jdbcType=VARCHAR},
+            </if>
+            <if test="seatId != null" >
+                #{seatId,jdbcType=BIGINT},
+            </if>
+            <if test="seatName != null" >
+                #{seatName,jdbcType=VARCHAR},
+            </if>
+            <if test="seatCode != null" >
+                #{seatCode,jdbcType=VARCHAR},
+            </if>
+            <if test="gradeNo != null" >
+                #{gradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="ctiAgentId != null" >
+                #{ctiAgentId,jdbcType=VARCHAR},
+            </if>
+            <if test="spOrgId != null" >
+                #{spOrgId,jdbcType=BIGINT},
+            </if>
+            <if test="spOrgName != null" >
+                #{spOrgName,jdbcType=VARCHAR},
+            </if>
+            <if test="spOrgCode != null" >
+                #{spOrgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="erOrgId != null" >
+                #{erOrgId,jdbcType=BIGINT},
+            </if>
+            <if test="erOrgName != null" >
+                #{erOrgName,jdbcType=VARCHAR},
+            </if>
+            <if test="erOrgCode != null" >
+                #{erOrgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="callMarkCntt != null" >
+                #{callMarkCntt,jdbcType=VARCHAR},
+            </if>
+            <if test="calledCustNum != null" >
+                #{calledCustNum,jdbcType=VARCHAR},
+            </if>
+            <if test="calledCustName != null" >
+                #{calledCustName,jdbcType=VARCHAR},
+            </if>
+            <if test="crtTime != null" >
+                #{crtTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="crtUserId != null" >
+                #{crtUserId,jdbcType=BIGINT},
+            </if>
+            <if test="crtAppSysId != null" >
+                #{crtAppSysId,jdbcType=VARCHAR},
+            </if>
+            <if test="extended1 != null" >
+                #{extended1,jdbcType=VARCHAR},
+            </if>
+            <if test="extended2 != null" >
+                #{extended2,jdbcType=VARCHAR},
+            </if>
+            <if test="extended3 != null" >
+                #{extended3,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="org.wcy.gen.model.TPfQuestionnaireRecord" >
+        update t_pf_questionnaire_record
+        <set >
+            <if test="touchId != null" >
+                touch_id = #{touchId,jdbcType=BIGINT},
+            </if>
+            <if test="qnaireId != null" >
+                qnaire_id = #{qnaireId,jdbcType=BIGINT},
+            </if>
+            <if test="questionId != null" >
+                question_id = #{questionId,jdbcType=BIGINT},
+            </if>
+            <if test="questionType != null" >
+                question_type = #{questionType,jdbcType=INTEGER},
+            </if>
+            <if test="answer != null" >
+                answer = #{answer,jdbcType=VARCHAR},
+            </if>
+            <if test="taskId != null" >
+                task_id = #{taskId,jdbcType=BIGINT},
+            </if>
+            <if test="taskName != null" >
+                task_name = #{taskName,jdbcType=VARCHAR},
+            </if>
+            <if test="taskCode != null" >
+                task_code = #{taskCode,jdbcType=VARCHAR},
+            </if>
+            <if test="seatId != null" >
+                seat_id = #{seatId,jdbcType=BIGINT},
+            </if>
+            <if test="seatName != null" >
+                seat_name = #{seatName,jdbcType=VARCHAR},
+            </if>
+            <if test="seatCode != null" >
+                seat_code = #{seatCode,jdbcType=VARCHAR},
+            </if>
+            <if test="gradeNo != null" >
+                grade_no = #{gradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="ctiAgentId != null" >
+                cti_agent_id = #{ctiAgentId,jdbcType=VARCHAR},
+            </if>
+            <if test="spOrgId != null" >
+                sp_org_id = #{spOrgId,jdbcType=BIGINT},
+            </if>
+            <if test="spOrgName != null" >
+                sp_org_name = #{spOrgName,jdbcType=VARCHAR},
+            </if>
+            <if test="spOrgCode != null" >
+                sp_org_code = #{spOrgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="erOrgId != null" >
+                er_org_id = #{erOrgId,jdbcType=BIGINT},
+            </if>
+            <if test="erOrgName != null" >
+                er_org_name = #{erOrgName,jdbcType=VARCHAR},
+            </if>
+            <if test="erOrgCode != null" >
+                er_org_code = #{erOrgCode,jdbcType=VARCHAR},
+            </if>
+            <if test="callMarkCntt != null" >
+                call_mark_cntt = #{callMarkCntt,jdbcType=VARCHAR},
+            </if>
+            <if test="calledCustNum != null" >
+                called_cust_num = #{calledCustNum,jdbcType=VARCHAR},
+            </if>
+            <if test="calledCustName != null" >
+                called_cust_name = #{calledCustName,jdbcType=VARCHAR},
+            </if>
+            <if test="crtTime != null" >
+                crt_time = #{crtTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="crtUserId != null" >
+                crt_user_id = #{crtUserId,jdbcType=BIGINT},
+            </if>
+            <if test="crtAppSysId != null" >
+                crt_app_sys_id = #{crtAppSysId,jdbcType=VARCHAR},
+            </if>
+            <if test="extended1 != null" >
+                extended1 = #{extended1,jdbcType=VARCHAR},
+            </if>
+            <if test="extended2 != null" >
+                extended2 = #{extended2,jdbcType=VARCHAR},
+            </if>
+            <if test="extended3 != null" >
+                extended3 = #{extended3,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="org.wcy.gen.model.TPfQuestionnaireRecord" >
+        update t_pf_questionnaire_record
+        set touch_id = #{touchId,jdbcType=BIGINT},
+            qnaire_id = #{qnaireId,jdbcType=BIGINT},
+            question_id = #{questionId,jdbcType=BIGINT},
+            question_type = #{questionType,jdbcType=INTEGER},
+            answer = #{answer,jdbcType=VARCHAR},
+            task_id = #{taskId,jdbcType=BIGINT},
+            task_name = #{taskName,jdbcType=VARCHAR},
+            task_code = #{taskCode,jdbcType=VARCHAR},
+            seat_id = #{seatId,jdbcType=BIGINT},
+            seat_name = #{seatName,jdbcType=VARCHAR},
+            seat_code = #{seatCode,jdbcType=VARCHAR},
+            grade_no = #{gradeNo,jdbcType=VARCHAR},
+            cti_agent_id = #{ctiAgentId,jdbcType=VARCHAR},
+            sp_org_id = #{spOrgId,jdbcType=BIGINT},
+            sp_org_name = #{spOrgName,jdbcType=VARCHAR},
+            sp_org_code = #{spOrgCode,jdbcType=VARCHAR},
+            er_org_id = #{erOrgId,jdbcType=BIGINT},
+            er_org_name = #{erOrgName,jdbcType=VARCHAR},
+            er_org_code = #{erOrgCode,jdbcType=VARCHAR},
+            call_mark_cntt = #{callMarkCntt,jdbcType=VARCHAR},
+            called_cust_num = #{calledCustNum,jdbcType=VARCHAR},
+            called_cust_name = #{calledCustName,jdbcType=VARCHAR},
+            crt_time = #{crtTime,jdbcType=TIMESTAMP},
+            crt_user_id = #{crtUserId,jdbcType=BIGINT},
+            crt_app_sys_id = #{crtAppSysId,jdbcType=VARCHAR},
+            extended1 = #{extended1,jdbcType=VARCHAR},
+            extended2 = #{extended2,jdbcType=VARCHAR},
+            extended3 = #{extended3,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>

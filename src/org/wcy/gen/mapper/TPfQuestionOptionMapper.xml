@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.wcy.gen.mapper.TPfQuestionOptionMapper" >
+
+    <resultMap id="BaseResultMap" type="org.wcy.gen.model.TPfQuestionOption" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="question_id" property="questionId" jdbcType="BIGINT" />
+        <result column="serial_num" property="serialNum" jdbcType="INTEGER" />
+        <result column="option_content" property="optionContent" jdbcType="VARCHAR" />
+        <result column="crt_time" property="crtTime" jdbcType="TIMESTAMP" />
+        <result column="crt_user_id" property="crtUserId" jdbcType="BIGINT" />
+        <result column="crt_app_sys_id" property="crtAppSysId" jdbcType="VARCHAR" />
+        <result column="modf_user_id" property="modfUserId" jdbcType="BIGINT" />
+        <result column="modf_time" property="modfTime" jdbcType="TIMESTAMP" />
+        <result column="modf_app_sys_id" property="modfAppSysId" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, question_id, serial_num, option_content, crt_time, crt_user_id, crt_app_sys_id, 
+        modf_user_id, modf_time, modf_app_sys_id
+    </sql>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select 
+        <include refid="Base_Column_List" />
+        from t_pf_question_option
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+        delete from t_pf_question_option
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <insert id="insert" parameterType="org.wcy.gen.model.TPfQuestionOption" >
+        insert into t_pf_question_option (id, question_id, serial_num, 
+            option_content, crt_time, crt_user_id, 
+            crt_app_sys_id, modf_user_id, modf_time, 
+            modf_app_sys_id)
+        values (#{id,jdbcType=BIGINT}, #{questionId,jdbcType=BIGINT}, #{serialNum,jdbcType=INTEGER}, 
+            #{optionContent,jdbcType=VARCHAR}, #{crtTime,jdbcType=TIMESTAMP}, #{crtUserId,jdbcType=BIGINT}, 
+            #{crtAppSysId,jdbcType=VARCHAR}, #{modfUserId,jdbcType=BIGINT}, #{modfTime,jdbcType=TIMESTAMP}, 
+            #{modfAppSysId,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="insertSelective" parameterType="org.wcy.gen.model.TPfQuestionOption" >
+        insert into t_pf_question_option
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="questionId != null" >
+                question_id,
+            </if>
+            <if test="serialNum != null" >
+                serial_num,
+            </if>
+            <if test="optionContent != null" >
+                option_content,
+            </if>
+            <if test="crtTime != null" >
+                crt_time,
+            </if>
+            <if test="crtUserId != null" >
+                crt_user_id,
+            </if>
+            <if test="crtAppSysId != null" >
+                crt_app_sys_id,
+            </if>
+            <if test="modfUserId != null" >
+                modf_user_id,
+            </if>
+            <if test="modfTime != null" >
+                modf_time,
+            </if>
+            <if test="modfAppSysId != null" >
+                modf_app_sys_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="questionId != null" >
+                #{questionId,jdbcType=BIGINT},
+            </if>
+            <if test="serialNum != null" >
+                #{serialNum,jdbcType=INTEGER},
+            </if>
+            <if test="optionContent != null" >
+                #{optionContent,jdbcType=VARCHAR},
+            </if>
+            <if test="crtTime != null" >
+                #{crtTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="crtUserId != null" >
+                #{crtUserId,jdbcType=BIGINT},
+            </if>
+            <if test="crtAppSysId != null" >
+                #{crtAppSysId,jdbcType=VARCHAR},
+            </if>
+            <if test="modfUserId != null" >
+                #{modfUserId,jdbcType=BIGINT},
+            </if>
+            <if test="modfTime != null" >
+                #{modfTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modfAppSysId != null" >
+                #{modfAppSysId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="org.wcy.gen.model.TPfQuestionOption" >
+        update t_pf_question_option
+        <set >
+            <if test="questionId != null" >
+                question_id = #{questionId,jdbcType=BIGINT},
+            </if>
+            <if test="serialNum != null" >
+                serial_num = #{serialNum,jdbcType=INTEGER},
+            </if>
+            <if test="optionContent != null" >
+                option_content = #{optionContent,jdbcType=VARCHAR},
+            </if>
+            <if test="crtTime != null" >
+                crt_time = #{crtTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="crtUserId != null" >
+                crt_user_id = #{crtUserId,jdbcType=BIGINT},
+            </if>
+            <if test="crtAppSysId != null" >
+                crt_app_sys_id = #{crtAppSysId,jdbcType=VARCHAR},
+            </if>
+            <if test="modfUserId != null" >
+                modf_user_id = #{modfUserId,jdbcType=BIGINT},
+            </if>
+            <if test="modfTime != null" >
+                modf_time = #{modfTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modfAppSysId != null" >
+                modf_app_sys_id = #{modfAppSysId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <update id="updateByPrimaryKey" parameterType="org.wcy.gen.model.TPfQuestionOption" >
+        update t_pf_question_option
+        set question_id = #{questionId,jdbcType=BIGINT},
+            serial_num = #{serialNum,jdbcType=INTEGER},
+            option_content = #{optionContent,jdbcType=VARCHAR},
+            crt_time = #{crtTime,jdbcType=TIMESTAMP},
+            crt_user_id = #{crtUserId,jdbcType=BIGINT},
+            crt_app_sys_id = #{crtAppSysId,jdbcType=VARCHAR},
+            modf_user_id = #{modfUserId,jdbcType=BIGINT},
+            modf_time = #{modfTime,jdbcType=TIMESTAMP},
+            modf_app_sys_id = #{modfAppSysId,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+</mapper>
